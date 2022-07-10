@@ -1,5 +1,21 @@
 body {
     background-color: white;
     color: black;
-    font-family: 
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+header {
+    color: grey;
+    font-size: 16px;
+    padding: 30px 10px;
+    text-align: center;
+}
+
+main {
+    color: blue;
+}
+
+footer {
+    color: green;
 }
