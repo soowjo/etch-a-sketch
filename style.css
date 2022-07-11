@@ -14,6 +14,28 @@ header {
 
 main {
     color: blue;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+#densityButton {
+    margin: 10px;
+}
+
+#grid {
+    display: grid;
+    width: 640px;
+    height: 640px;
+    background-color: grey;
+}
+
+.cell {
+    border: 0px solid cyan;
 }
 
 footer {
