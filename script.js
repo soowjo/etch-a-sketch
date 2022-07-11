@@ -1,7 +1,6 @@
-const grid = document.querySelector('#grid')
-let defaultColor = 'yellow'
-let highlightColor = 'magenta'
-let sketchColor = 'cyan'
+let defaultColor = 'yellow';
+let highlightColor = 'magenta';
+let sketchColor = 'cyan';
 let eraser = false;
 
 const densityButton = document.querySelector('#densityButton');
@@ -12,12 +11,14 @@ const eraserButton = document.querySelector('#eraserButton');
 
 eraserButton.addEventListener('click', () => {
     if (eraser) {
-        sketchColor = 
+        sketchColor = 'cyan';
         eraser = false;
+        eraserButton.textContent = 'Activate eraser'
     }
     else {
         eraser = true;
-
+        sketchColor = 'yellow';
+        eraserButton.textContent = "Deactivate eraser"
     }
 })
 
@@ -32,17 +33,20 @@ function densitySet() {
 }
 
 function makeGrid(density) {
+    const grid = document.querySelector('#grid')
     grid.textContent = '';
-    grid.style['grid-template-columns'] = `repeat(${density}, 1fr)`
-    grid.style['grid-template-rows'] = `repeat(${density}, 1fr)`
+    grid.style['grid-template-columns'] = `repeat(${density}, 1fr)`;
+    grid.style['grid-template-rows'] = `repeat(${density}, 1fr)`;
+    grid.style['background-color'] = 'yellow';
     for (let i=0; i<density**2; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        grid.appendChild(cell);
+        const cells = document.createElement('div');
+        cells.classList.add('cells');
+        grid.appendChild(cells);
     }
-    cell.forEach(i => i.addEventListener('mouseenter', enteringCell));
-    cell.forEach(i => i.addEventListener('mouseleave', leavingCell));
-    cell.forEach(i => i.addEventListener('click', clickingCell));
+    const cells = document.querySelectorAll('.cells');
+    cells.forEach(i => i.addEventListener('mouseenter', enteringCell));
+    cells.forEach(i => i.addEventListener('mouseleave', leavingCell));
+    cells.forEach(i => i.addEventListener('click', clickingCell));
 }
 
 function enteringCell() {
@@ -51,12 +55,16 @@ function enteringCell() {
     }
     else {
         this.style['background-color'] = sketchColor;
+        this.classList.add('colored')
     }
 }
 
 function leavingCell() {
-    if (!(this.style['background-color'] == sketchColor)) {
+    if (!(this.classList.contains('colored'))) {
         this.style['background-color'] = defaultColor;
+    }
+    else if (this.classList.contains('colored')) {
+        this.style['background-color'] = sketchColor;
     }
 }
 

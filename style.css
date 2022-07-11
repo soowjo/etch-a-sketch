@@ -23,7 +23,7 @@ main {
     align-content: center;
 }
 
-#densityButton {
+button {
     margin: 10px;
 }
 
@@ -31,11 +31,11 @@ main {
     display: grid;
     width: 640px;
     height: 640px;
-    background-color: grey;
+    border: 0.01px solid grey;
 }
 
-.cell {
-    border: 0px solid cyan;
+.cells {
+    border: 0.01px solid grey;
 }
 
 footer {
